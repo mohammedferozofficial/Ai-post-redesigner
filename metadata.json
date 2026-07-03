@@ -1,0 +1,8 @@
+{
+  "name": "AI Post Redesigner",
+  "description": "An interactive post designer and visual content generator that lets you upload an image, headline, and text, and then uses Gemini AI to redesign and optimize your layouts, styles, and copy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
