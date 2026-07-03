@@ -63,6 +63,13 @@ export default function App() {
         body: JSON.stringify(payload)
       });
 
+      if (!res.ok) {
+        if (res.status === 404 || window.location.hostname.includes("github.io")) {
+          throw new Error("This app is running on a static host (like GitHub Pages) which does not support the Express backend. Please run the app locally ('npm run dev') or deploy it to a dynamic container host (like Cloud Run) to use the AI redesign backend.");
+        }
+        throw new Error(`Server returned status ${res.status}`);
+      }
+
       const data = await res.json();
       
       if (data.success && data.recommendation) {
@@ -153,6 +160,13 @@ export default function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: promptText })
       });
+
+      if (!res.ok) {
+        if (res.status === 404 || window.location.hostname.includes("github.io")) {
+          throw new Error("This app is running on a static host (like GitHub Pages) which does not support the Express backend. Please run the app locally ('npm run dev') or deploy it to a dynamic container host (like Cloud Run) to use the background generation features.");
+        }
+        throw new Error(`Server returned status ${res.status}`);
+      }
 
       const data = await res.json();
       
